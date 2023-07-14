@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+/**
+ * 用户
+ * @author Jinze
+ */
 @RestController
 @RequestMapping("/api/user")
 public class UserController {

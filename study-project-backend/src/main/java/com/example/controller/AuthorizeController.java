@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 用户验证类
+ * @author Jinze
+ */
 @Validated
 @RestController
 @RequestMapping("/api/auth")
@@ -27,20 +31,22 @@ public class AuthorizeController {
     public RestBean<String> validateRegisterEmail(@Pattern(regexp = EMAIL_REGEX) @RequestParam("email") String email,
                                           HttpSession session){
         String s = service.sendValidateEmail(email, session.getId(), false);
-        if (s == null)
+        if (s == null) {
             return RestBean.success("邮件已发送，请注意查收");
-        else
+        } else {
             return RestBean.failure(400, s);
+        }
     }
 
     @PostMapping("/valid-reset-email")
     public RestBean<String> validateResetEmail(@Pattern(regexp = EMAIL_REGEX) @RequestParam("email") String email,
                                           HttpSession session){
         String s = service.sendValidateEmail(email, session.getId(), true);
-        if (s == null)
+        if (s == null) {
             return RestBean.success("邮件已发送，请注意查收");
-        else
+        } else {
             return RestBean.failure(400, s);
+        }
     }
 
     @PostMapping("/register")
@@ -50,10 +56,11 @@ public class AuthorizeController {
                                          @Length(min = 6, max = 6) @RequestParam("code") String code,
                                          HttpSession session) {
         String s = service.validateAndRegister(username, password, email, code, session.getId());
-        if(s == null)
+        if(s == null) {
             return RestBean.success("注册成功");
-        else
+        } else {
             return RestBean.failure(400, s);
+        }
     }
 
     @PostMapping("/start-reset")

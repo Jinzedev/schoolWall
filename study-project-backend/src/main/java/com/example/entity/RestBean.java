@@ -2,6 +2,10 @@ package com.example.entity;
 
 import lombok.Data;
 
+/**
+ * 返回体
+ * @author Jinze
+ */
 @Data
 public class RestBean<T> {
     private int status;
