@@ -8,7 +8,7 @@
         </div>
         <el-menu
             style="border: none"
-            default-active="1"
+            :default-active="router.currentRoute.value.path"
             :collapse="isCollapse"
             router
         >
@@ -104,6 +104,7 @@ const logout = () => {
     get('/api/auth/logout', (message) => {
         ElMessage.success(message)
         store.auth.user = null
+        localStorage.removeItem('user')
         router.push('/')
     })
 }

@@ -4,15 +4,12 @@ import {useStore} from "@/stores";
 import router from "@/router";
 
 const store = useStore()
+const user = localStorage.getItem('user')
 
-if(store.auth.user == null) {
-    get('/api/user/me', (message) => {
-        store.auth.user = message
-        router.push('/index')
-    }, () => {
-        store.auth.user = null
-    })
+if (user != null){
+  store.auth.user = JSON.parse(user)
 }
+
 </script>
 
 <template>

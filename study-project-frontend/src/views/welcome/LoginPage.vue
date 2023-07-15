@@ -64,6 +64,7 @@ const login = () => {
             ElMessage.success(message)
             get('/api/user/me', (message) => {
                 store.auth.user = message
+                localStorage.setItem('user',JSON.stringify(message))
                 router.push('/index')
             }, () => {
                 store.auth.user = null
