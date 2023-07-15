@@ -8,8 +8,9 @@
         </div>
         <el-menu
             style="border: none"
-            default-active="2"
+            default-active="1"
             :collapse="isCollapse"
+            router
         >
           <el-menu-item index="/index">
             <el-icon><icon-menu /></el-icon>
@@ -27,7 +28,7 @@
             <el-icon><setting /></el-icon>
             <span>我的收藏</span>
           </el-menu-item>
-          <el-menu-item index="/index/settings">
+          <el-menu-item index="/index/setting">
             <el-icon><setting /></el-icon>
             <span>个人设置</span>
           </el-menu-item>
@@ -71,7 +72,9 @@
           </div>
 
         </el-header>
-        <el-main style="" >Main</el-main>
+        <el-main style="padding: 0" >
+          <router-view/>
+        </el-main>
       </el-container>
     </el-container>
   </div>
