@@ -2,7 +2,7 @@
     <div style="width: 100vw;height: 100vh;overflow: hidden;display: flex">
         <div style="flex: 1">
             <el-image style="width: 100%;height: 100%" fit="cover"
-                      src="https://img1.baidu.com/it/u=4097856652,4033702227&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800"/>
+                      src="https://pic2.zhimg.com/v2-bff3ad66aa4b756a9241646d35274061_r.jpg"/>
         </div>
         <div class="welcome-title">
             <div style="font-size: 30px;font-weight: bold">欢迎来到我们的ikun平台</div>

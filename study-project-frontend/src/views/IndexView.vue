@@ -1,11 +1,15 @@
 <template>
-  <div>
-      欢迎{{store.auth.user.username}}进入到学习平台
-  </div>
-  <div>
-      <el-button @click="logout()" type="danger" plain>退出登录</el-button>
+  <div >
+    <el-container style="height: 100vh">
+      <el-aside style="border-right: solid 1px #cccccc" width="250px">Aside</el-aside>
+      <el-container>
+        <el-header style="border-bottom: solid 1px #cccccc;">Header</el-header>
+        <el-main style="" >Main</el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
+
 
 <script setup>
 import {get} from "@/net";

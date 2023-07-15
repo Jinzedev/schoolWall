@@ -2,6 +2,10 @@ package com.example.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+/***
+ * 用户授权服务层
+ * @author jinze
+*/
 public interface AuthorizeService extends UserDetailsService {
     /***
      * 发送邮箱验证码

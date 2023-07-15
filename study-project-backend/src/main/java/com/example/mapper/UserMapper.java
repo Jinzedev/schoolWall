@@ -13,7 +13,7 @@ public interface UserMapper {
      * 根据用户名或邮箱查询用户所有信息
      * @param text 登录信息
      * @author jinze
-    */
+     */
     @Select("select * from db_account where username = #{text} or email = #{text}")
     Account findAccountByNameOrEmail(String text);
 
@@ -33,7 +33,7 @@ public interface UserMapper {
      * @param email 邮箱
      * @return int
      * @author jinze
-    */
+     */
     @Insert("insert into db_account (email, username, password) values (#{email}, #{username}, #{password})")
     int createAccount(String username, String password, String email);
 
@@ -43,7 +43,7 @@ public interface UserMapper {
      * @param email 邮箱
      * @return int
      * @author jinze
-    */
+     */
     @Update("update db_account set password = #{password} where email = #{email}")
     int resetPasswordByEmail(String password, String email);
 }
