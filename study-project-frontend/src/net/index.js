@@ -3,23 +3,24 @@ import {ElMessage} from "element-plus";
 import router from "@/router";
 import {useStore} from "@/stores";
 
-const store = useStore()
+
 
 const defaultError = () => ElMessage.error('发生了一些错误，请联系管理员')
 const defaultFailure = (message) => ElMessage.warning(message)
 
-function post(url, data, success, failure = defaultFailure, error = defaultError) {
+function post(url, data, success, type = 'x-www-form-urlencoded', failure = defaultFailure, error = defaultError) {
     axios.post(url, data, {
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/'+type
         },
         withCredentials: true
     }).then(({data}) => {
-        if (data.status === 401){
+        if(data.status === 401) {
             localStorage.removeItem('user')
-            store.auth.user = null
+            const store = useStore()
+            store.auth.user = undefined
             router.push('/')
-        }else if(data.success)
+        } else if(data.success)
             success(data.message, data.status)
         else
             failure(data.message, data.status)
@@ -30,15 +31,17 @@ function get(url, success, failure = defaultFailure, error = defaultError) {
     axios.get(url, {
         withCredentials: true
     }).then(({data}) => {
-        if (data.status === 401){
+        if(data.status === 401) {
             localStorage.removeItem('user')
-            store.auth.user = null
+            const store = useStore()
+            store.auth.user = undefined
             router.push('/')
-        }else if(data.success)
+        } else if(data.success)
             success(data.message, data.status)
         else
             failure(data.message, data.status)
     }).catch(error)
 }
+
 
 export { get, post }
