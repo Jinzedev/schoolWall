@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import {useStore} from "@/stores";
+import InfoSettings from "@/components/settings/InfoSettings.vue";
 
 
 const store = useStore()
@@ -13,7 +14,7 @@ const activeName = ref('info')
     <div style="flex: 1">
       <el-tabs v-model="activeName">
         <el-tab-pane label="个人信息设置" name="info">
-
+          <info-settings></info-settings>
         </el-tab-pane>
         <el-tab-pane label="账号安全设置" name="security">
 
