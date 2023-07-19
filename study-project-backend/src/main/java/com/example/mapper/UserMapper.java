@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.entity.auth.Account;
+import com.example.entity.user.AccountInfo;
 import com.example.entity.user.AccountUser;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -46,4 +47,14 @@ public interface UserMapper {
      */
     @Update("update db_account set password = #{password} where email = #{email}")
     int resetPasswordByEmail(String password, String email);
+
+
+    @Insert("""
+            INSERT INTO db_account_info (uid, sex, wx, qq, phone, blog, user_desc)
+            values(#{uid}, #{sex}, #{wx}, #{qq},#{phone},#{blog}, #{user_desc})
+             on duplicate key update uid = #{uid},sex = #{sex},wx = #{wx},qq = #{qq},
+             phone = #{phone},blog = #{blog},user_desc = #{user_desc}
+            """)
+    void saveUserInfo(AccountInfo info);
+
 }
