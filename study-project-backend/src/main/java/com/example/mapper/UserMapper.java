@@ -57,4 +57,6 @@ public interface UserMapper {
             """)
     void saveUserInfo(AccountInfo info);
 
+    @Update("update db_account set username = #{username} where id = #{uid}")
+    void updateUserName(String username, int uid);
 }

@@ -26,8 +26,12 @@ public class UserController {
     public RestBean<String> saveUserInfo(@RequestBody AccountInfo info,
                                          @SessionAttribute("account") AccountUser user){
         info.setUid(user.getId());
-        userService.saveUserInfo(info);
-        return RestBean.success();
+        if (userService.saveUserInfo(info)) {
+            return RestBean.success();
+        }else {
+            return RestBean.failure(400,"用户名已被其他用户使用,无法修改");
+        }
+
     }
 
 }

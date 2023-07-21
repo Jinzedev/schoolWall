@@ -4,6 +4,6 @@ import com.example.entity.user.AccountInfo;
 
 public interface UserService {
 
-    void saveUserInfo(AccountInfo info);
+    boolean saveUserInfo(AccountInfo info);
 
 }
