@@ -1,18 +1,20 @@
 <script setup>
-import {reactive, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import {Select} from "@element-plus/icons-vue";
-import {post} from "@/net";
+import {get, post} from "@/net";
 import {ElMessage} from "element-plus";
 
 const infoForm = reactive({
-  username: '',
-  sex: 'male',
+  username: null,
+  sex: '',
   wx: '',
   qq: '',
   phone: '',
   blog: '',
   user_desc: '',
 })
+
+
 
 const form = ref()
 
@@ -77,9 +79,23 @@ const save = () =>{
       ElMessage.warning('表单内容有误，请重新检查内容是否正确填写')
     }
   })
-
-
 }
+
+onMounted(() => {
+  if (infoForm.username == null){
+    get('/api/user/getUserInfo',(message) => {
+      infoForm.username = message.username
+      infoForm.sex = message.sex ? message.sex : 'male'
+      infoForm.qq = message.qq
+      infoForm.wx = message.wx
+      infoForm.phone = message.phone
+      infoForm.blog = message.blog
+      infoForm.user_desc = message.user_desc
+    })
+  }
+
+
+})
 
 
 </script>

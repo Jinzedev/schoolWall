@@ -6,4 +6,5 @@ public interface UserService {
 
     boolean saveUserInfo(AccountInfo info);
 
+    AccountInfo getUserInfo(int uid);
 }
